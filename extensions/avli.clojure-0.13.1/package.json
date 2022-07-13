@@ -1,0 +1,204 @@
+{
+	"name": "clojure",
+	"displayName": "Clojure",
+	"description": "Clojure nREPL support for Visual Studio Code",
+	"version": "0.13.1",
+	"publisher": "avli",
+	"author": {
+		"name": "Andrey Lisin",
+		"email": "andrey.lisin@gmail.com"
+	},
+	"contributors": [
+		{
+			"name": "Thiago Almeida",
+			"email": "fasfsfgs@gmail.com"
+		},
+		{
+			"name": "Mike Ball",
+			"email": "michaelhball@gmail.com"
+		},
+		{
+			"name": "Egor Yurtaev",
+			"email": "yurtaev.egor+github@gmail.com"
+		},
+		{
+			"name": "Mark Hansen",
+			"email": "mark@markhansen.co.nz"
+		},
+		{
+			"name": "Fabian Achammer",
+			"email": "fabian.achammer@gmail.com"
+		},
+		{
+			"name": "Nikita Prokopov",
+			"email": "prokopov@gmail.com"
+		},
+		{
+			"name": "Frederik Ring",
+			"email": "frederik.ring@gmail.com"
+		},
+		{
+			"name": "Alessandro Decina",
+			"email": "alessandro.d@gmail.com"
+		},
+		{
+			"name": "Marc O'Morain",
+			"email": "github.com@marcomorain.com"
+		},
+		{
+			"name": "Andrey Bogoyavlensky",
+			"email": "abogoyavlensky@gmail.com"
+		}
+	],
+	"license": "MIT",
+	"icon": "images/icon.png",
+	"engines": {
+		"vscode": "^1.14.0"
+	},
+	"recommendations": [
+		"tonsky.clojure-warrior"
+	],
+	"categories": [
+		"Programming Languages",
+		"Other"
+	],
+	"activationEvents": [
+		"onLanguage:clojure"
+	],
+	"main": "./dist/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "clojureVSCode.eval",
+				"title": "Clojure: Eval"
+			},
+			{
+				"command": "clojureVSCode.evalAndShowResult",
+				"title": "Clojure: Eval and show the result"
+			},
+			{
+				"command": "clojureVSCode.testNamespace",
+				"title": "Clojure: Test the current namespace"
+			},
+			{
+				"command": "clojureVSCode.runAllTests",
+				"title": "Clojure: Run all tests"
+			},
+			{
+				"command": "clojureVSCode.manuallyConnectToNRepl",
+				"title": "Clojure: Connect to a running nREPL"
+			},
+			{
+				"command": "clojureVSCode.startNRepl",
+				"title": "Clojure: Start nREPL"
+			},
+			{
+				"command": "clojureVSCode.stopDisconnectNRepl",
+				"title": "Clojure: Disconnect from nREPL"
+			}
+		],
+		"views": {
+			"test": [
+				{
+					"id": "clojure",
+					"name": "Clojure"
+				}
+			]
+		},
+		"configuration": {
+			"type": "object",
+			"title": "Clojure extension configuration",
+			"properties": {
+				"clojureVSCode.autoStartNRepl": {
+					"type": "boolean",
+					"default": true,
+					"description": "Automatically run an embedded nREPL instance and connect to it on Clojure file open."
+				},
+				"clojureVSCode.formatOnSave": {
+					"type": "boolean",
+					"default": false,
+					"description": "Format the code on save."
+				},
+				"clojureVSCode.cljfmtParameters": {
+					"type": "string",
+					"description": "Parameters which will be passed to cljfmt.",
+					"default": ""
+				},
+				"clojureVSCode.showResultInline": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show evaluation result inline."
+				},
+				"clojureVSCode.ciderNReplVersion": {
+					"type": "string",
+					"default": "0.24.0",
+					"description": "Version of CIDER to use for the embedded nREPL."
+				},
+				"clojureVSCode.cljfmtVersion": {
+					"type": "string",
+					"default": "0.6.7",
+					"description": "Version of cljfmt to use for formatting Clojure files."
+				}
+			}
+		},
+		"colors": [
+			{
+				"id": "clojureVSCode.inlineResultBackground",
+				"description": "Background color of the inline result.",
+				"defaults": {
+					"dark": "#00000000",
+					"light": "#00000000",
+					"highContrast": "#00000000"
+				}
+			},
+			{
+				"id": "clojureVSCode.inlineResultForeground",
+				"description": "Foreground color of the inline result.",
+				"defaults": {
+					"dark": "#99999999",
+					"light": "#99999999",
+					"highContrast": "#99999999"
+				}
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "webpack --mode production",
+		"webpack": "webpack --mode development",
+		"webpack-dev": "webpack --mode development --watch",
+		"test-compile": "tsc -p ./",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/cross-spawn": "^6.0.2",
+		"@types/jszip": "^3.4.1",
+		"@types/mocha": "^2.2.48",
+		"@types/node": "^6.14.10",
+		"minimist": "^1.2.5",
+		"mocha": "^5.2.0",
+		"ts-loader": "^6.2.2",
+		"typescript": "^3.9.2",
+		"vscode": "^1.1.37",
+		"webpack": "^4.43.0",
+		"webpack-cli": "^3.3.11"
+	},
+	"dependencies": {
+		"bencoder": "^0.0.5",
+		"cross-spawn": "^6.0.1",
+		"jszip": "^3.4.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/avli/clojureVSCode"
+	},
+	"__metadata": {
+		"id": "353f8b4c-77be-4809-8e4f-0414612dad64",
+		"publisherId": "5a7cef8f-102e-4e2f-a13c-7c1fb7a780bc",
+		"publisherDisplayName": "Andrey Lisin",
+		"targetPlatform": "undefined",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"preRelease": false,
+		"installedTimestamp": 1655366094096
+	}
+}
